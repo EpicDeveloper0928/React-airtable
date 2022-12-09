@@ -4,9 +4,9 @@ import Header from "../header";
 
 export default function MainLayout() {
   return (
-    <>
+    <div className="text-white">
       <Header />
       <Outlet />
-    </>
+    </div>
   );
 }
