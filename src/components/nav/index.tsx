@@ -1,11 +1,13 @@
 import React from "react";
-import Button, { ButtonType } from "../forms/button";
+
+import Button, { ButtonType } from "components/forms/button";
+import { BellIcon, FaqIcon, HistoryIcon, UserIcon } from "components/icons";
 
 const navList: ButtonType[] = [
-  { icon: "history", variant: "text" },
-  { icon: "H", text: "help", variant: "text" },
-  { icon: "S", text: "Share" },
-  { icon: "B" },
+  { icon: <HistoryIcon />, variant: "text" },
+  { icon: <FaqIcon />, text: "help", variant: "text" },
+  { icon: <UserIcon />, text: "Share" },
+  { icon: <BellIcon /> },
 ];
 
 function Nav() {
