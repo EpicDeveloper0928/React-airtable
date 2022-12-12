@@ -10,5 +10,6 @@ export type ToolType = {
 export type HeaderType = {
   name: string;
   label: string;
+  minWidth?: string;
   icon?: React.ReactNode;
 };

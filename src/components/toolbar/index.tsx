@@ -9,6 +9,7 @@ import {
   FilterIcon,
   GridViewIcon,
   GroupIcon,
+  SearchIcon,
   ShareIcon,
   SortIcon,
   UsersIcon,
@@ -40,26 +41,30 @@ function Toolbar() {
   const [selectedTool, setSelectedTool] = useState<ToolType>();
 
   return (
-    <div
-      className="flex space-x-4 items-center h-11 border-b pl-3"
-      aria-label="Tabs"
-    >
-      {TOOLS.map((tab) => (
-        <button
-          key={tab.name}
-          className={classNames(
-            "font-medium text-sm rounded-sm hover:bg-gray-100 px-2 border-y-2 border-transparent flex items-center",
-            selectedTool?.name === tab.name
-              ? "bg-gray-100 text-gray-700"
-              : "text-gray-500 hover:text-gray-700"
-          )}
-          onClick={() => setSelectedTool(tab)}
-        >
-          {tab.leftIcon ? <span className="mr-1">{tab.leftIcon}</span> : null}
-          <span>{tab.label}</span>
-          {tab.rightIcon ? <span className="ml-1">{tab.rightIcon}</span> : null}
-        </button>
-      ))}
+    <div className="flex justify-between border-b">
+      <ul className="flex items-center h-11" aria-label="Tabs">
+        {TOOLS.map((tab) => (
+          <li
+            key={tab.name}
+            className={classNames(
+              "font-medium text-sm rounded-sm hover:bg-gray-100 px-2 border-y-2 border-transparent flex items-center",
+              selectedTool?.name === tab.name
+                ? "bg-gray-100 text-gray-700"
+                : "text-gray-500 hover:text-gray-700"
+            )}
+            onClick={() => setSelectedTool(tab)}
+          >
+            {tab.leftIcon ? <span className="mr-1">{tab.leftIcon}</span> : null}
+            <span>{tab.label}</span>
+            {tab.rightIcon ? (
+              <span className="ml-1">{tab.rightIcon}</span>
+            ) : null}
+          </li>
+        ))}
+      </ul>
+      <button className="pr-4 text-slate-500 hover:text-slate-700">
+        <SearchIcon />
+      </button>
     </div>
   );
 }

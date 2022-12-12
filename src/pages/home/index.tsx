@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 
 import Table from "components/table";
-import Toolbar from "components/toolbar";
 import Tabs from "components/tabs";
 
 export default function Home() {
@@ -10,9 +9,8 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="bg-sky-600 h-8 text-white">
+    <div className="flex flex-col h-full">
       <Tabs />
-      <Toolbar />
       <Table />
     </div>
   );
