@@ -11,11 +11,6 @@ interface Props<T> {
 function TableHeader<T>({ columns, type }: Props<T>) {
   return (
     <div className="flex h-8 bg-gray-100 border-b">
-      {type === "fixed" ? (
-        <div className="sticky flex m-2 border-r">
-          <CheckBox />
-        </div>
-      ) : null}
       {columns.map((column, index) => (
         <div
           key={`key-${index}`}
@@ -29,7 +24,7 @@ function TableHeader<T>({ columns, type }: Props<T>) {
             {column.title}
           </div>
           <span className="px-1 py-2 leading-4 text-gray-400 cursor-pointer hover:text-gray-800">
-            <DropDownHeader />
+            <DropDownHeader currentColumn={column} />
           </span>
         </div>
       ))}

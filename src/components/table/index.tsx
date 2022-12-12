@@ -11,10 +11,9 @@ import {
   ViewsIcon,
 } from "components/icons";
 
-const leftWidth = "250";
 export interface IColumnType<T> {
   key: string;
-  title: string;
+  title: React.ReactNode;
   width?: number;
   icon?: React.ReactNode;
   render?: (column: IColumnType<T>, item: T) => void;
@@ -29,6 +28,7 @@ const fixedColumns: IColumnType<IData>[] = [
     key: "name",
     title: "Name",
     icon: <FontIcon />,
+    width: 200,
   },
 ];
 
@@ -61,7 +61,7 @@ const dynamicData: IData[] = [
   },
 ];
 
-const fixedData: IData[] = [];
+const fixedData: IData[] = [{ name: "name" }];
 
 // export const TABLE_HEADER: HeaderType[] = [
 //   { name: "name", label: "Name", icon: <FontIcon /> },
@@ -72,7 +72,7 @@ export default function Example() {
     <div className="flex flex-col h-full">
       <Toolbar />
       <div className="relative flex h-full text-slate-800">
-        <LeftPane data={fixedData} columns={fixedColumns} width={leftWidth} />
+        <LeftPane data={fixedData} columns={fixedColumns} />
         <div className="flex-1 overflow-x-auto">
           <RightPane data={dynamicData} columns={dynamicColumns} />
         </div>

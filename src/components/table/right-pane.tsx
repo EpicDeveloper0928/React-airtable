@@ -7,14 +7,13 @@ import { IColumnType } from ".";
 
 interface Props<T> {
   data: T[];
-  type?: "fixed" | "movable";
   columns: IColumnType<T>[];
 }
 
-function RightPane<T>({ data, columns, type }: Props<T>) {
+function RightPane<T>({ data, columns }: Props<T>) {
   return (
     <div className="z-0 flex flex-col justify-between h-full border-r">
-      <TableHeader columns={columns} type={type} />
+      <TableHeader columns={columns} />
       <TableBody data={data} columns={columns} />
       <TableFooter />
     </div>

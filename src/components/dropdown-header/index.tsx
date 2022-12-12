@@ -18,6 +18,12 @@ import {
 } from "components/icons";
 import { Menu, Transition } from "@headlessui/react";
 import classNames from "classnames";
+import { insertColumn } from "helpers/header-dropdown";
+import { IColumnType } from "components/table";
+
+type Props<T> = {
+  currentColumn: IColumnType<T>;
+};
 
 type DropDownList = {
   name: string;
@@ -25,62 +31,77 @@ type DropDownList = {
   icon: React.ReactNode;
   borderTop?: boolean;
   disabled?: boolean;
+  onClick?: (e: any) => void;
 };
 
-const dropDownList: DropDownList[] = [
-  { name: "edit", label: "Edit field", icon: <PencilIcon /> },
-  {
-    name: "duplicate",
-    label: "Duplicate field",
-    icon: <CopyIcon />,
-    borderTop: true,
-  },
-  { name: "insert_left", label: "Insert left", icon: <MoveForwardIcon /> },
-  { name: "insert_right", label: "Insert right", icon: <MoveNextIcon /> },
-  {
-    name: "copy_field_url",
-    label: "Copy field URL",
-    icon: <LinkIcon />,
-    borderTop: true,
-  },
-  {
-    name: "edit_field_description",
-    label: "Edit field description",
-    icon: <InfoIcon />,
-  },
-  {
-    name: "sort_ascending",
-    label: "Sort First-Last",
-    icon: <SortUpIcon />,
-    borderTop: true,
-  },
-  { name: "sort_descending", label: "Sort Last-First", icon: <SortDownIcon /> },
-  {
-    name: "filter_by_this_field",
-    label: "Filter by this field",
-    icon: <FilterIcon />,
-    borderTop: true,
-  },
-  {
-    name: "group_by_this_field",
-    label: "Group by this field",
-    icon: <GroupIcon />,
-  },
-  {
-    name: "show_dependencies",
-    label: "Show dependencies",
-    icon: <ConditionIcon />,
-  },
-  {
-    name: "hide_field",
-    label: "Hide field",
-    icon: <CodeIcon />,
-    borderTop: true,
-  },
-  { name: "delete_field", label: "Delete field", icon: <TrashIcon /> },
-];
+function DropDownHeader<T>({ currentColumn }: Props<T>) {
+  const dropDownList: DropDownList[] = [
+    { name: "edit", label: "Edit field", icon: <PencilIcon /> },
+    {
+      name: "duplicate",
+      label: "Duplicate field",
+      icon: <CopyIcon />,
+      borderTop: true,
+    },
+    {
+      name: "insert_left",
+      label: "Insert left",
+      icon: <MoveForwardIcon />,
+      onClick: () => insertColumn(currentColumn, "left"),
+    },
+    {
+      name: "insert_right",
+      label: "Insert right",
+      icon: <MoveNextIcon />,
+      onClick: () => insertColumn(currentColumn, "right"),
+    },
+    {
+      name: "copy_field_url",
+      label: "Copy field URL",
+      icon: <LinkIcon />,
+      borderTop: true,
+    },
+    {
+      name: "edit_field_description",
+      label: "Edit field description",
+      icon: <InfoIcon />,
+    },
+    {
+      name: "sort_ascending",
+      label: "Sort First-Last",
+      icon: <SortUpIcon />,
+      borderTop: true,
+    },
+    {
+      name: "sort_descending",
+      label: "Sort Last-First",
+      icon: <SortDownIcon />,
+    },
+    {
+      name: "filter_by_this_field",
+      label: "Filter by this field",
+      icon: <FilterIcon />,
+      borderTop: true,
+    },
+    {
+      name: "group_by_this_field",
+      label: "Group by this field",
+      icon: <GroupIcon />,
+    },
+    {
+      name: "show_dependencies",
+      label: "Show dependencies",
+      icon: <ConditionIcon />,
+    },
+    {
+      name: "hide_field",
+      label: "Hide field",
+      icon: <CodeIcon />,
+      borderTop: true,
+    },
+    { name: "delete_field", label: "Delete field", icon: <TrashIcon /> },
+  ];
 
-function DropDownHeader() {
   return (
     <Menu as="div" className="relative z-10 inline-block text-left">
       <Menu.Button>
@@ -95,14 +116,17 @@ function DropDownHeader() {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute right-0 w-56 p-3 mt-2 origin-top-right bg-white rounded-md shadow-lg z- ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <Menu.Items className="absolute z-50 w-56 p-3 mt-2 origin-top-right bg-white rounded-md shadow-lg -right-4 ring-1 ring-black ring-opacity-5 focus:outline-none">
           {dropDownList.map((item) => (
             <div
               key={item.name}
               className={classNames({ "border-t pt-2 mt-2": item.borderTop })}
             >
               <Menu.Item>
-                <button className="flex items-center w-full px-2 py-2 text-sm rounded-md group hover:bg-slate-900/10 text-slate-600">
+                <button
+                  className="flex items-center w-full px-2 py-2 text-sm rounded-md group hover:bg-slate-900/10 text-slate-600"
+                  onClick={item.onClick}
+                >
                   {item.icon}
                   <span className="ml-4">{item.label}</span>
                 </button>
