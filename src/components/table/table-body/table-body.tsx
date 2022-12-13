@@ -1,11 +1,11 @@
 import React from "react";
-import { IColumnType } from "..";
 
 import TableRowCell from "./table-row-cell";
+import { IColumnType } from "types/table";
 
 interface Props<T> {
   data: T[];
-  columns: IColumnType<T>[];
+  columns?: IColumnType<T>[];
 }
 
 function TableBody<T>({ data, columns }: Props<T>) {
@@ -14,7 +14,7 @@ function TableBody<T>({ data, columns }: Props<T>) {
       {data.length > 0 ? (
         data.map((item, index) => (
           <div key={`table-body-${index}`} className="flex border-b">
-            {columns.map((column, columnIndex) => (
+            {columns?.map((column, columnIndex) => (
               <TableRowCell
                 key={`table-row-cell-${columnIndex}`}
                 item={item}

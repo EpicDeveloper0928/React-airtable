@@ -1,9 +1,9 @@
 import React from "react";
-import { IColumnType } from ".";
 
 import TableBody from "./table-body/table-body";
 import TableFooter from "./table-footer";
 import TableHeader from "./table-header";
+import { IColumnType } from "types/table";
 
 interface Props<T> {
   data: T[];

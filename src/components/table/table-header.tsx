@@ -1,17 +1,17 @@
 import React from "react";
 
 import DropDownHeader from "components/dropdown-header";
-import { IColumnType } from ".";
 import Icon from "components/icons/icon";
+import { IColumnType } from "types/table";
 interface Props<T> {
   type?: "fixed" | "movable";
-  columns: IColumnType<T>[];
+  columns?: IColumnType<T>[];
 }
 
 function TableHeader<T>({ columns, type }: Props<T>) {
   return (
     <div className="flex h-8 bg-gray-100 border-b">
-      {columns.map((column, index) => (
+      {columns?.map((column, index) => (
         <div
           key={`key-${index}`}
           style={{ width: column.width ? column.width : "100%" }}

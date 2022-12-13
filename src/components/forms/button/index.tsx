@@ -5,13 +5,19 @@ import { IconName } from "constant/icons";
 import Icon from "components/icons/icon";
 
 export type ButtonType = {
-  icon: IconName;
+  icon?: IconName;
   text?: string;
   variant?: "text" | "solid" | "outline";
   className?: string;
 };
 
-function Button({ icon, text, variant = "solid", className }: ButtonType) {
+function Button({
+  icon,
+  text,
+  variant = "solid",
+  className,
+  ...rest
+}: ButtonType & React.ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
     <button
       className={classNames(
@@ -24,8 +30,9 @@ function Button({ icon, text, variant = "solid", className }: ButtonType) {
           "w-7 ": !text && !!icon,
         }
       )}
+      {...rest}
     >
-      <Icon name={icon} />
+      {icon ? <Icon name={icon} /> : null}
       {text ? <span className="ml-1">{text}</span> : null}
     </button>
   );

@@ -3,11 +3,11 @@ import React from "react";
 import TableBody from "./table-body/table-body";
 import TableHeader from "./table-header";
 import TableFooter from "./table-footer";
-import { IColumnType } from ".";
+import { IColumnType } from "types/table";
 
 interface Props<T> {
   data: T[];
-  columns: IColumnType<T>[];
+  columns?: IColumnType<T>[];
 }
 
 function RightPane<T>({ data, columns }: Props<T>) {

@@ -4,7 +4,7 @@ import mainReducer from "./home";
 
 const store = configureStore({
   reducer: {
-    manage: mainReducer,
+    main: mainReducer,
   },
 });
 

@@ -1,5 +1,5 @@
-import { IconName } from "constant/icons";
 import React from "react";
+import { IconName } from "constant/icons";
 
 export type ToolType = {
   name: string;
@@ -13,4 +13,17 @@ export type HeaderType = {
   label: string;
   minWidth?: string;
   icon?: IconName;
+};
+
+export interface IColumnType<T> {
+  id: number;
+  key: string;
+  title: React.ReactNode;
+  width?: number;
+  icon?: IconName;
+  render?: (column: IColumnType<T>, item: T) => void;
+}
+
+export type IData = {
+  [key in string]: string;
 };

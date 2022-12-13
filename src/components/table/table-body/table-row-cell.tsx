@@ -1,6 +1,7 @@
 import React from "react";
+
 import get from "lodash.get";
-import { IColumnType } from "..";
+import { IColumnType } from "types/table";
 
 interface Props<T> {
   item: T;
