@@ -25,7 +25,7 @@ function TableHeader<T>({ columns, type }: Props<T>) {
             ) : null}
             {column.title}
           </div>
-          <span className="px-1 py-2 leading-4 text-gray-400 cursor-pointer hover:text-gray-800">
+          <span className="px-1 py-2 leading-4">
             <DropDownHeader currentColumn={column} />
           </span>
         </div>

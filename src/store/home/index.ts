@@ -24,14 +24,22 @@ const mainSlice = createSlice({
       state,
       {
         payload,
-      }: { payload: IColumnType<IData> & { position: "left" | "right" } }
+      }: {
+        payload: {
+          current: IColumnType<IData>;
+          new: IColumnType<IData>;
+          position: string;
+        };
+      }
     ) => {
+      console.log(payload);
+
       const selectedIndex =
-        state.data?.findIndex((item) => item.id === payload.id) ?? 0;
+        state.data?.findIndex((item) => item.id === payload.current.id) ?? 0;
       state.data?.splice(
-        payload.position === "left" ? selectedIndex : selectedIndex,
+        payload.position === "left" ? selectedIndex : selectedIndex + 1,
         0,
-        { ...payload }
+        { ...payload.new }
       );
     },
   },

@@ -18,7 +18,7 @@ export type HeaderType = {
 export interface IColumnType<T> {
   id: number;
   key: string;
-  title: React.ReactNode;
+  title: string;
   width?: number;
   icon?: IconName;
   render?: (column: IColumnType<T>, item: T) => void;

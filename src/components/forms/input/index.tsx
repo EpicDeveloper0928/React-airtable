@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import React from "react";
 
 interface Props extends React.InputHTMLAttributes<HTMLElement> {
@@ -15,14 +16,16 @@ const Input = React.forwardRef(
       error,
       variant,
       required,
+      placeholder,
       register = {},
+      className,
       type = "text",
       ...rest
     }: Props,
     ref
   ) => {
     return (
-      <div className="grid items-center grid-cols-4">
+      <>
         {!!label && (
           <label className="block text-sm font-medium text-center text-slate-700">
             {label}
@@ -33,16 +36,16 @@ const Input = React.forwardRef(
             ref={ref as React.LegacyRef<HTMLInputElement>}
             type={type}
             required={required}
-            className="block w-full px-3 py-2 text-sm bg-white border rounded-md shadow-sm peer border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
+            placeholder={placeholder}
+            className={classNames(
+              className,
+              "block h-8 px-[10px] text-sm bg-slate-500/10 rounded ring-2 ring-slate-400 peer text-slate-700 focus:outline-none focus:bg-white focus:border-slate-400 focus:ring-2 focus:ring-blue-500"
+            )}
             {...rest}
             {...register}
           />
-
-          <p className="hidden h-5 mt-2 text-sm text-pink-600 peer-valid:block">
-            {error}
-          </p>
         </div>
-      </div>
+      </>
     );
   }
 );
