@@ -1,8 +1,8 @@
 import React from "react";
 
-import CheckBox from "components/forms/checkbox";
 import DropDownHeader from "components/dropdown-header";
 import { IColumnType } from ".";
+import Icon from "components/icons/icon";
 interface Props<T> {
   type?: "fixed" | "movable";
   columns: IColumnType<T>[];
@@ -19,7 +19,9 @@ function TableHeader<T>({ columns, type }: Props<T>) {
         >
           <div className="flex items-center">
             {column.icon ? (
-              <span className="px-1 text-gray-400">{column.icon}</span>
+              <span className="px-1 text-gray-400">
+                <Icon name={column.icon} />
+              </span>
             ) : null}
             {column.title}
           </div>

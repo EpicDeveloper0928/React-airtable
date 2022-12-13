@@ -1,25 +1,11 @@
 import React, { Fragment } from "react";
 
-import {
-  CodeIcon,
-  ConditionIcon,
-  CopyIcon,
-  DropDownIcon,
-  FilterIcon,
-  GroupIcon,
-  InfoIcon,
-  LinkIcon,
-  MoveForwardIcon,
-  MoveNextIcon,
-  PencilIcon,
-  SortDownIcon,
-  SortUpIcon,
-  TrashIcon,
-} from "components/icons";
 import { Menu, Transition } from "@headlessui/react";
 import classNames from "classnames";
 import { insertColumn } from "helpers/header-dropdown";
 import { IColumnType } from "components/table";
+import Icon from "components/icons/icon";
+import { IconName } from "constant/icons";
 
 type Props<T> = {
   currentColumn: IColumnType<T>;
@@ -28,7 +14,7 @@ type Props<T> = {
 type DropDownList = {
   name: string;
   label: string;
-  icon: React.ReactNode;
+  icon: IconName;
   borderTop?: boolean;
   disabled?: boolean;
   onClick?: (e: any) => void;
@@ -36,76 +22,76 @@ type DropDownList = {
 
 function DropDownHeader<T>({ currentColumn }: Props<T>) {
   const dropDownList: DropDownList[] = [
-    { name: "edit", label: "Edit field", icon: <PencilIcon /> },
+    { name: "edit", label: "Edit field", icon: "edit" },
     {
       name: "duplicate",
       label: "Duplicate field",
-      icon: <CopyIcon />,
+      icon: "duplicate",
       borderTop: true,
     },
     {
       name: "insert_left",
       label: "Insert left",
-      icon: <MoveForwardIcon />,
+      icon: "left",
       onClick: () => insertColumn(currentColumn, "left"),
     },
     {
       name: "insert_right",
       label: "Insert right",
-      icon: <MoveNextIcon />,
+      icon: "right",
       onClick: () => insertColumn(currentColumn, "right"),
     },
     {
       name: "copy_field_url",
       label: "Copy field URL",
-      icon: <LinkIcon />,
+      icon: "hyperlink",
       borderTop: true,
     },
     {
       name: "edit_field_description",
       label: "Edit field description",
-      icon: <InfoIcon />,
+      icon: "info",
     },
     {
       name: "sort_ascending",
       label: "Sort First-Last",
-      icon: <SortUpIcon />,
+      icon: "ascending",
       borderTop: true,
     },
     {
       name: "sort_descending",
       label: "Sort Last-First",
-      icon: <SortDownIcon />,
+      icon: "descending",
     },
     {
       name: "filter_by_this_field",
       label: "Filter by this field",
-      icon: <FilterIcon />,
+      icon: "filter",
       borderTop: true,
     },
     {
       name: "group_by_this_field",
       label: "Group by this field",
-      icon: <GroupIcon />,
+      icon: "group",
     },
     {
       name: "show_dependencies",
       label: "Show dependencies",
-      icon: <ConditionIcon />,
+      icon: "settings",
     },
     {
       name: "hide_field",
       label: "Hide field",
-      icon: <CodeIcon />,
+      icon: "hide1",
       borderTop: true,
     },
-    { name: "delete_field", label: "Delete field", icon: <TrashIcon /> },
+    { name: "delete_field", label: "Delete field", icon: "trash" },
   ];
 
   return (
     <Menu as="div" className="relative z-10 inline-block text-left">
       <Menu.Button>
-        <DropDownIcon />
+        <Icon name="caret" />
       </Menu.Button>
       <Transition
         as={Fragment}
@@ -127,7 +113,7 @@ function DropDownHeader<T>({ currentColumn }: Props<T>) {
                   className="flex items-center w-full px-2 py-2 text-sm rounded-md group hover:bg-slate-900/10 text-slate-600"
                   onClick={item.onClick}
                 >
-                  {item.icon}
+                  <Icon name={item.icon} />
                   <span className="ml-4">{item.label}</span>
                 </button>
               </Menu.Item>

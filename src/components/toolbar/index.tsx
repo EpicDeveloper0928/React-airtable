@@ -2,39 +2,27 @@ import React, { useState } from "react";
 import classNames from "classnames";
 
 import { ToolType } from "types/table";
-import {
-  CodeIcon,
-  ColorFillIcon,
-  ExpandShortIcon,
-  FilterIcon,
-  GridViewIcon,
-  GroupIcon,
-  SearchIcon,
-  ShareIcon,
-  SortIcon,
-  UsersIcon,
-  ViewsIcon,
-} from "components/icons";
+import Icon from "components/icons/icon";
 
 const TOOLS: ToolType[] = [
-  { name: "view", label: "Views", leftIcon: <ViewsIcon /> },
+  { name: "view", label: "Views", leftIcon: "menu" },
   {
     name: "grid_view",
     label: "Grid view",
-    leftIcon: <GridViewIcon />,
-    rightIcon: <UsersIcon />,
+    leftIcon: "grid",
+    rightIcon: "team",
   },
   {
     name: "hide_fields",
     label: "Hide fields",
-    leftIcon: <CodeIcon />,
+    leftIcon: "hide1",
   },
-  { name: "filter", label: "Filter", leftIcon: <FilterIcon /> },
-  { name: "group", label: "Group", leftIcon: <GroupIcon /> },
-  { name: "sort", label: "Sort", leftIcon: <SortIcon /> },
-  { name: "color", label: "Color", leftIcon: <ColorFillIcon /> },
-  { name: "row_height", label: "", leftIcon: <ExpandShortIcon /> },
-  { name: "share_view", label: "Share view", leftIcon: <ShareIcon /> },
+  { name: "filter", label: "Filter", leftIcon: "filter" },
+  { name: "group", label: "Group", leftIcon: "group" },
+  { name: "sort", label: "Sort", leftIcon: "sort" },
+  { name: "color", label: "Color", leftIcon: "paint" },
+  { name: "row_height", label: "", leftIcon: "rowHeightSmall" },
+  { name: "share_view", label: "Share view", leftIcon: "share1" },
 ];
 
 function Toolbar() {
@@ -54,16 +42,22 @@ function Toolbar() {
             )}
             onClick={() => setSelectedTool(tab)}
           >
-            {tab.leftIcon ? <span className="mr-1">{tab.leftIcon}</span> : null}
+            {tab.leftIcon ? (
+              <span className="mr-1">
+                <Icon name={tab.leftIcon} />
+              </span>
+            ) : null}
             <span>{tab.label}</span>
             {tab.rightIcon ? (
-              <span className="ml-1">{tab.rightIcon}</span>
+              <span className="ml-1">
+                <Icon name={tab.rightIcon} />
+              </span>
             ) : null}
           </li>
         ))}
       </ul>
       <button className="pr-4 text-slate-500 hover:text-slate-700">
-        <SearchIcon />
+        <Icon name="search" />
       </button>
     </div>
   );

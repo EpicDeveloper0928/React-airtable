@@ -1,8 +1,11 @@
-import classNames from "classnames";
 import React from "react";
+import classNames from "classnames";
+
+import { IconName } from "constant/icons";
+import Icon from "components/icons/icon";
 
 export type ButtonType = {
-  icon?: React.ReactNode;
+  icon: IconName;
   text?: string;
   variant?: "text" | "solid" | "outline";
   className?: string;
@@ -22,7 +25,7 @@ function Button({ icon, text, variant = "solid", className }: ButtonType) {
         }
       )}
     >
-      {icon}
+      <Icon name={icon} />
       {text ? <span className="ml-1">{text}</span> : null}
     </button>
   );

@@ -3,19 +3,13 @@ import React from "react";
 import LeftPane from "./left-pane";
 import RightPane from "./right-pane";
 import Toolbar from "components/toolbar";
-import {
-  CheckboxIcon,
-  DocumentIcon,
-  FontIcon,
-  ListIcon,
-  ViewsIcon,
-} from "components/icons";
+import { IconName } from "constant/icons";
 
 export interface IColumnType<T> {
   key: string;
   title: React.ReactNode;
   width?: number;
-  icon?: React.ReactNode;
+  icon?: IconName;
   render?: (column: IColumnType<T>, item: T) => void;
 }
 
@@ -27,7 +21,7 @@ const fixedColumns: IColumnType<IData>[] = [
   {
     key: "name",
     title: "Name",
-    icon: <FontIcon />,
+    icon: "text",
     width: 200,
   },
 ];
@@ -36,13 +30,13 @@ const dynamicColumns: IColumnType<IData>[] = [
   {
     key: "description",
     title: "Description",
-    icon: <ViewsIcon />,
+    icon: "paragraph",
     width: 160,
   },
-  { key: "photo", title: "Photo", icon: <DocumentIcon />, width: 160 },
-  { key: "like", title: "Like", icon: <CheckboxIcon />, width: 160 },
-  { key: "option", title: "Option", icon: <ListIcon />, width: 160 },
-  { key: "gender", title: "Gender", icon: <FontIcon />, width: 160 },
+  { key: "photo", title: "Photo", icon: "view", width: 160 },
+  { key: "like", title: "Like", icon: "checkboxChecked", width: 160 },
+  { key: "option", title: "Option", icon: "grid", width: 160 },
+  { key: "gender", title: "Gender", icon: "personalCloseup", width: 160 },
   // { key: "phone", title: "Phone", icon: "P" },
   // { key: "email", title: "Email Address", icon: "E" },
   // { key: "birthday", title: "Birthday", icon: "B" },

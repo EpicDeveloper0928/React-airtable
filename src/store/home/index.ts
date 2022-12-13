@@ -14,7 +14,7 @@ const setData = (state: MainState, data: any) => {
   state.data = data;
 };
 
-export const mainSlice = createSlice({
+const mainSlice = createSlice({
   name: PREFIX,
   initialState,
   reducers: {},
@@ -28,3 +28,5 @@ export const mainSlice = createSlice({
     );
   },
 });
+
+export default mainSlice.reducer;
