@@ -12,7 +12,7 @@ function TableRowCell<T>({ item, column }: Props<T>) {
   const value = get(item, column.key);
   return (
     <div
-      className="flex items-center h-8 px-2 border-r"
+      className="flex items-center h-8 border-r"
       style={{ width: column.width }}
     >
       {column.render ? column.render(column, item) : value}

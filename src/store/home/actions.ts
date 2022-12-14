@@ -12,6 +12,13 @@ export const getMainData = createAsyncThunk("main/getMainData", async () => {
       },
       { id: 2, key: "photo", title: "Photo", icon: "view", width: 160 },
       {
+        id: 5,
+        key: "attachment",
+        title: "Attachment",
+        icon: "file",
+        width: 160,
+      },
+      {
         id: 3,
         key: "like",
         title: "Like",

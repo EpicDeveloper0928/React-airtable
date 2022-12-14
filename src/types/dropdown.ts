@@ -1,4 +1,4 @@
-import { IconName } from "constant/icons";
+import { IconName } from "./icon";
 
 export type DropDownList = {
   name: string;

@@ -1,5 +1,6 @@
 import React from "react";
-import { IconName } from "constant/icons";
+
+import { IconName } from "./icon";
 
 export type ToolType = {
   name: string;
@@ -25,5 +26,5 @@ export interface IColumnType<T> {
 }
 
 export type IData = {
-  [key in string]: string;
+  [key in string]: any;
 };

@@ -1,5 +1,7 @@
-import { IconName, iconPaths } from "constant/icons";
 import React from "react";
+
+import { iconPaths } from "constant/icons";
+import { IconName } from "types/icon";
 
 interface Props {
   name: IconName;

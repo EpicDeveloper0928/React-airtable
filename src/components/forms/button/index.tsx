@@ -1,8 +1,8 @@
 import React from "react";
 import classNames from "classnames";
 
-import { IconName } from "constant/icons";
 import Icon from "components/icons/icon";
+import { IconName } from "types/icon";
 
 export type ButtonType = {
   icon?: IconName;

@@ -4,6 +4,7 @@ import LeftPane from "./left-pane";
 import RightPane from "./right-pane";
 import Toolbar from "components/toolbar";
 import { IColumnType, IData } from "types/table";
+import AttachField from "components/attach-field";
 
 type Props = {
   dynamicColumns?: IColumnType<IData>[];
@@ -23,6 +24,7 @@ const dynamicData: IData[] = [
   {
     description: "Francisco Mendes",
     photo: "Full Stack",
+    attachment: <AttachField />,
     like: "ebv",
     option: "ebv",
     gender: "ebv",
